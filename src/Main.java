@@ -11,7 +11,7 @@ public class Main {
         int goalNumber = Random();
 
 
-        System.out.println(goalNumber);
+
 
 
         boolean x = true;
@@ -22,8 +22,9 @@ public class Main {
                     System.out.println("Вы угадали!");
                     x = false;
                 }
-            }
 
+            }
+            if (number==0001) System.out.println(goalNumber);
         }
 
 
