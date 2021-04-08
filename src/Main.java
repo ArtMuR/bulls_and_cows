@@ -10,34 +10,33 @@ public class Main {
         // int goalNumber = (int) ((Math.random() * 8999) + 1001);
         int goalNumber = Random();
 
+        int count = 1;
+        while (true) {
 
-
-
-
-        boolean x = true;
-        while (x == true) {
             String s = scanner.nextLine();
             if (Checker(s, goalNumber)) {
+                count++;
                 if (number == goalNumber) {
-                    System.out.println("Вы угадали!");
-                    x = false;
+                    System.out.println("Вы угадали !\nКоличество попыток: " + count);
+                    break;
                 }
 
             }
-            if (number==0001) System.out.println(goalNumber);
+            if (number == 0001) System.out.println(goalNumber);
+
         }
 
 
     }
 
     private static int Random() {
-        int randNumber = (int) ((Math.random() * 8999) + 1001);
+        //int randNumber = (int) ((Math.random() * 8999) + 1001);
 
 
-        HashSet<Integer> hashSetNum = new HashSet<Integer>(1);
-
+        LinkedHashSet<Integer> hashSetNum = new LinkedHashSet<Integer>();
+        hashSetNum.add((int) (Math.random() * 9) + 1);
         while (hashSetNum.size() < 4) {
-            hashSetNum.add((int) (Math.random() * 9) + 1);
+            hashSetNum.add((int) (Math.random() * 10));
         }
 
         int number = 0;
@@ -64,7 +63,7 @@ public class Main {
 
         int inputNumbersArr[] = new int[4];
         for (int i = 0; i < inputNumbersArr.length; i++) {
-            inputNumbersArr[i] = Integer.valueOf(number).toString().charAt(i) - '0'; // хуйня
+            inputNumbersArr[i] = unidentifiedNumber.toString().charAt(i) - '0'; // хуйня
         }
 
         ArrayList<Integer> arrayList = new ArrayList(2);
