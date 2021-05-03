@@ -1,14 +1,16 @@
 import java.util.*;
 
 public class Main {
-    static int number; // выглядит так себе
+    static int number;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println("Доброго времени суток. Чтобы начать игру введите четырёхзначное число.");
-        // int goalNumber = (int) ((Math.random() * 8999) + 1001);
         int goalNumber = Random();
+        long start = System.currentTimeMillis();
+        CountThread countThread = new CountThread(start);
+        countThread.start();
 
         int count = 1;
         while (true) {
@@ -18,7 +20,15 @@ public class Main {
                 count++;
                 if (number == goalNumber) {
                     System.out.println("Вы угадали !\nКоличество попыток: " + count);
+
+                    countThread.interrupt();
+                    try {
+                        countThread.join();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                     break;
+
                 }
 
             }
